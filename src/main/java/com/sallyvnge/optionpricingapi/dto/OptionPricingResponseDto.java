@@ -1,6 +1,6 @@
-package com.sallyvnge.derivativesanalyticsengine.dto;
+package com.sallyvnge.optionpricingapi.dto;
 
-import com.sallyvnge.derivativesanalyticsengine.model.PricingModel;
+import com.sallyvnge.optionpricingapi.model.PricingModel;
 import lombok.Builder;
 
 /**

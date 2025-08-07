@@ -1,7 +1,7 @@
-package com.sallyvnge.derivativesanalyticsengine.service;
+package com.sallyvnge.optionpricingapi.service;
 
-import com.sallyvnge.derivativesanalyticsengine.dto.OptionRequestDto;
-import com.sallyvnge.derivativesanalyticsengine.model.OptionType;
+import com.sallyvnge.optionpricingapi.dto.OptionRequestDto;
+import com.sallyvnge.optionpricingapi.model.OptionType;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
@@ -9,10 +9,9 @@ import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.within;
 
 class BlackScholesPricingServiceTest {
-
     private BlackScholesPricingService blackScholesPricingService;
 
-    @BeforeEach()
+    @BeforeEach
     void setUp() {
         blackScholesPricingService = new BlackScholesPricingService();
     }

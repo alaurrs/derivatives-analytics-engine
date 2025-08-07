@@ -1,6 +1,6 @@
-package com.sallyvnge.derivativesanalyticsengine.dto;
+package com.sallyvnge.optionpricingapi.dto;
 
-import com.sallyvnge.derivativesanalyticsengine.model.OptionType;
+import com.sallyvnge.optionpricingapi.model.OptionType;
 import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Positive;
 import lombok.Builder;

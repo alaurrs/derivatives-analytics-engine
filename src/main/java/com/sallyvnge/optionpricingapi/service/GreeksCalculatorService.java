@@ -1,10 +1,9 @@
-package com.sallyvnge.derivativesanalyticsengine.service;
+package com.sallyvnge.optionpricingapi.service;
 
-import com.sallyvnge.derivativesanalyticsengine.dto.OptionRequestDto;
-import com.sallyvnge.derivativesanalyticsengine.exception.UnsupportedOrMissingOptionTypeException;
-import com.sallyvnge.derivativesanalyticsengine.model.Greeks;
-import com.sallyvnge.derivativesanalyticsengine.util.BlackScholesUtil;
-import com.sallyvnge.derivativesanalyticsengine.util.NormalDistributionUtil;
+import com.sallyvnge.optionpricingapi.dto.OptionRequestDto;
+import com.sallyvnge.optionpricingapi.model.Greeks;
+import com.sallyvnge.optionpricingapi.util.BlackScholesUtil;
+import com.sallyvnge.optionpricingapi.util.NormalDistributionUtil;
 import org.springframework.stereotype.Service;
 
 @Service

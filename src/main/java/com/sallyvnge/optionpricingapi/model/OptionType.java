@@ -1,4 +1,4 @@
-package com.sallyvnge.derivativesanalyticsengine.model;
+package com.sallyvnge.optionpricingapi.model;
 
 /**
  * Represents the type of an option in the context of financial derivatives.

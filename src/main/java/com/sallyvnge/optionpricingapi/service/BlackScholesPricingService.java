@@ -1,13 +1,12 @@
-package com.sallyvnge.derivativesanalyticsengine.service;
+package com.sallyvnge.optionpricingapi.service;
 
-import com.sallyvnge.derivativesanalyticsengine.dto.OptionRequestDto;
-import com.sallyvnge.derivativesanalyticsengine.util.BlackScholesUtil;
-import com.sallyvnge.derivativesanalyticsengine.util.NormalDistributionUtil;
+import com.sallyvnge.optionpricingapi.dto.OptionRequestDto;
+import com.sallyvnge.optionpricingapi.util.BlackScholesUtil;
+import com.sallyvnge.optionpricingapi.util.NormalDistributionUtil;
 import org.springframework.stereotype.Service;
 
 @Service
 public class BlackScholesPricingService {
-
 
     /**
      * Calculates the price of a European option (call or put) using the Black-Scholes model.

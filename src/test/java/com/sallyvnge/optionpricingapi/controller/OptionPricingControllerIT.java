@@ -1,8 +1,8 @@
-package com.sallyvnge.derivativesanalyticsengine.controller;
+package com.sallyvnge.optionpricingapi.controller;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.sallyvnge.derivativesanalyticsengine.dto.OptionRequestDto;
-import com.sallyvnge.derivativesanalyticsengine.model.OptionType;
+import com.sallyvnge.optionpricingapi.dto.OptionRequestDto;
+import com.sallyvnge.optionpricingapi.model.OptionType;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc;
@@ -11,8 +11,7 @@ import org.springframework.http.MediaType;
 import org.springframework.test.web.servlet.MockMvc;
 
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
-import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.jsonPath;
-import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
+import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.*;
 
 @SpringBootTest
 @AutoConfigureMockMvc

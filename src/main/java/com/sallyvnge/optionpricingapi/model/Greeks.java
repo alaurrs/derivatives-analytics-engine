@@ -1,4 +1,4 @@
-package com.sallyvnge.derivativesanalyticsengine.model;
+package com.sallyvnge.optionpricingapi.model;
 
 import lombok.Builder;
 

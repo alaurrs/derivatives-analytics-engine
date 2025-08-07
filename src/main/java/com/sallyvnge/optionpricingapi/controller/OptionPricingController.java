@@ -1,9 +1,8 @@
-package com.sallyvnge.derivativesanalyticsengine.controller;
+package com.sallyvnge.optionpricingapi.controller;
 
-
-import com.sallyvnge.derivativesanalyticsengine.dto.OptionPricingResponseDto;
-import com.sallyvnge.derivativesanalyticsengine.dto.OptionRequestDto;
-import com.sallyvnge.derivativesanalyticsengine.service.OptionPricingService;
+import com.sallyvnge.optionpricingapi.dto.OptionPricingResponseDto;
+import com.sallyvnge.optionpricingapi.dto.OptionRequestDto;
+import com.sallyvnge.optionpricingapi.service.OptionPricingService;
 import io.swagger.v3.oas.annotations.Operation;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;

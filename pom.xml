@@ -9,10 +9,10 @@
         <relativePath/> <!-- lookup parent from repository -->
     </parent>
     <groupId>com.sallyvnge</groupId>
-    <artifactId>derivatives-analytics-engine</artifactId>
+    <artifactId>option-pricing-api</artifactId>
     <version>0.0.1-SNAPSHOT</version>
-    <name>derivatives-analytics-engine</name>
-    <description>derivatives-analytics-engine</description>
+    <name>option-pricing-api</name>
+    <description>Option Pricing API - Financial derivatives pricing engine</description>
     <url/>
     <licenses>
         <license/>

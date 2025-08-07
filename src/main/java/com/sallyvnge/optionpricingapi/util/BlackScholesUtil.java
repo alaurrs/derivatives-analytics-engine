@@ -1,6 +1,4 @@
-package com.sallyvnge.derivativesanalyticsengine.util;
-
-import com.sallyvnge.derivativesanalyticsengine.dto.OptionRequestDto;
+package com.sallyvnge.optionpricingapi.util;
 
 public class BlackScholesUtil {
 

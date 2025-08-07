@@ -1,4 +1,4 @@
-package com.sallyvnge.derivativesanalyticsengine.exception;
+package com.sallyvnge.optionpricingapi.exception;
 
 import org.springframework.http.ResponseEntity;
 import org.springframework.http.converter.HttpMessageNotReadableException;

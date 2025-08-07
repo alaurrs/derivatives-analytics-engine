@@ -1,9 +1,9 @@
-package com.sallyvnge.derivativesanalyticsengine.service;
+package com.sallyvnge.optionpricingapi.service;
 
-import com.sallyvnge.derivativesanalyticsengine.dto.OptionPricingResponseDto;
-import com.sallyvnge.derivativesanalyticsengine.dto.OptionRequestDto;
-import com.sallyvnge.derivativesanalyticsengine.model.Greeks;
-import com.sallyvnge.derivativesanalyticsengine.model.PricingModel;
+import com.sallyvnge.optionpricingapi.dto.OptionPricingResponseDto;
+import com.sallyvnge.optionpricingapi.dto.OptionRequestDto;
+import com.sallyvnge.optionpricingapi.model.Greeks;
+import com.sallyvnge.optionpricingapi.model.PricingModel;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 

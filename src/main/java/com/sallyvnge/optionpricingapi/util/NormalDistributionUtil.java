@@ -1,4 +1,4 @@
-package com.sallyvnge.derivativesanalyticsengine.util;
+package com.sallyvnge.optionpricingapi.util;
 
 import org.apache.commons.math3.distribution.NormalDistribution;
 

@@ -1,6 +1,6 @@
-# Derivatives Analytics Engine
+# Option Pricing API
 
-A financial derivatives analytics engine built with Java and Spring Boot, specialized in option pricing and Greeks calculation using the Black-Scholes model.
+A financial derivatives pricing API built with Java and Spring Boot, specialized in option pricing and Greeks calculation using the Black-Scholes model.
 
 ## 🎯 Features
 
@@ -20,8 +20,9 @@ A financial derivatives analytics engine built with Java and Spring Boot, specia
 - **Spring Web** - REST API
 - **Spring Validation** - Data validation
 - **Spring Boot Actuator** - Monitoring and metrics
-- **Lombok 3.6.1** - Boilerplate code reduction
+- **Lombok 1.18.38** - Boilerplate code reduction
 - **SpringDoc OpenAPI 2.8.9** - API documentation and Swagger UI
+- **Apache Commons Math3 3.6.1** - Mathematical computations
 - **Maven** - Dependency management and build
 
 ## 📊 Financial Models
@@ -40,8 +41,8 @@ The project implements the Black-Scholes model for:
 
 ### Project Structure
 ```
-src/main/java/com/sallyvnge/derivativesanalyticsengine/
-├── DerivativesAnalyticsEngineApplication.java
+src/main/java/com/sallyvnge/optionpricingapi/
+├── OptionPricingApiApplication.java
 ├── controller/
 │   └── OptionPricingController.java
 ├── dto/
@@ -154,7 +155,7 @@ To calculate an option price, the following parameters are required:
 ```bash
 # Clone the repository
 git clone <repository-url>
-cd derivatives-analytics-engine
+cd option-pricing-api
 
 # Compile the project
 ./mvnw clean compile
@@ -218,4 +219,4 @@ This project follows Java and Spring Boot development best practices. Contributi
 
 ## 📄 License
 
-This project is licensed under [to be defined].
+This project is licensed under MIT.
