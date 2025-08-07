@@ -10,25 +10,18 @@ import org.springframework.validation.annotation.Validated;
 /**
  * Input for pricing an European option using Black-Scholes model
  */
-@Data
 @Builder
 @Validated
-public class OptionRequestDto {
+public record OptionRequestDto (
 
     @Positive
-    @NotNull
-    private double underlyingPrice;
+    @NotNull double underlyingPrice,
     @Positive
-    @NotNull
-    private double strikePrice;
+    @NotNull double strikePrice,
     @Positive
-    @NotNull
-    private double timeToMaturity;
-    @NotNull
-    private double riskFreeRate;
+    @NotNull double timeToMaturity,
+    @NotNull double riskFreeRate,
     @Positive
-    @NotNull
-    private double volatility;
-    @NotNull
-    private OptionType optionType;
-}
+    @NotNull double volatility,
+    @NotNull OptionType optionType
+) {}
