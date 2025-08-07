@@ -28,7 +28,6 @@ public class GreeksCalculatorService {
         delta = switch (optionRequestDto.optionType()) {
             case CALL -> NormalDistributionUtil.cumulativeDistribution(d1);
             case PUT -> NormalDistributionUtil.cumulativeDistribution(d1) - 1;
-            default -> throw new UnsupportedOrMissingOptionTypeException("Unsupported or missing option type: " + optionRequestDto.optionType());
         };
 
         gamma = NormalDistributionUtil.probabilityDensity(d1)/(S*sigma*Math.sqrt(T));
