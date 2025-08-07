@@ -4,11 +4,20 @@ import com.sallyvnge.derivativesanalyticsengine.model.OptionType;
 import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Positive;
 import lombok.Builder;
-import lombok.Data;
 import org.springframework.validation.annotation.Validated;
 
 /**
- * Input for pricing an European option using Black-Scholes model
+ * Represents the request data required for option pricing and risk metrics calculations
+ * in the context of financial derivatives. This includes data on the underlying asset,
+ * contract details, and market conditions.
+ *
+ * The request data fields are:
+ * - Underlying Price: Current price of the underlying asset (must be positive).
+ * - Strike Price: The price at which the option can be exercised (must be positive).
+ * - Time to Maturity: Time remaining until the option's expiration, expressed in years (must be positive).
+ * - Risk-Free Rate: Annualized risk-free interest rate, expressed as a decimal (can be negative or positive).
+ * - Volatility: Annualized standard deviation of the returns of the underlying asset (must be positive).
+ * - Option Type: The type of the option, specifying whether it is a CALL or PUT.
  */
 @Builder
 @Validated

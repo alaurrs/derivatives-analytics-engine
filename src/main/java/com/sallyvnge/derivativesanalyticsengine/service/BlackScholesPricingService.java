@@ -1,12 +1,21 @@
 package com.sallyvnge.derivativesanalyticsengine.service;
 
 import com.sallyvnge.derivativesanalyticsengine.dto.OptionRequestDto;
+import com.sallyvnge.derivativesanalyticsengine.util.BlackScholesUtil;
 import com.sallyvnge.derivativesanalyticsengine.util.NormalDistributionUtil;
 import org.springframework.stereotype.Service;
 
 @Service
 public class BlackScholesPricingService {
 
+
+    /**
+     * Calculates the price of a European option (call or put) using the Black-Scholes model.
+     *
+     * @param optionRequestDto the details of the option, including underlying price, strike price,
+     *                         time to maturity, risk-free rate, volatility, and option type (CALL or PUT)
+     * @return the calculated price of the option
+     */
     public double calculatePrice(OptionRequestDto optionRequestDto) {
         double S = optionRequestDto.underlyingPrice();
         double K = optionRequestDto.strikePrice();
@@ -14,8 +23,8 @@ public class BlackScholesPricingService {
         double r = optionRequestDto.riskFreeRate();
         double sigma = optionRequestDto.volatility();
 
-        double d1 = (Math.log(S / K) + (r + 0.5 * sigma * sigma) * T) / (sigma * Math.sqrt(T));
-        double d2 = d1 - sigma * Math.sqrt(T);
+        double d1 = BlackScholesUtil.computeD1(S, K, T, r, sigma);
+        double d2 = BlackScholesUtil.computeD2(d1, sigma, T);
 
         return switch (optionRequestDto.optionType()) {
             case CALL ->
