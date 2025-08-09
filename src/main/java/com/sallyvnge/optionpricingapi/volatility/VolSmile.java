@@ -1,77 +1,83 @@
 package com.sallyvnge.optionpricingapi.volatility;
 
-import lombok.Builder;
-
+import java.util.ArrayList;
 import java.util.Comparator;
 import java.util.List;
-import java.util.Objects;
 
-@Builder
-public record VolSmile (
-        String tenor,
-        double maturityYears,
-        List<VolPoint> volPoints
+/**
+ * Represents a volatility smile containing multiple volatility points.
+ * The smile consists of strike prices and their corresponding implied volatilities.
+ * Points are automatically sorted by strike price for efficient interpolation.
+ */
+public record VolSmile(List<VolPoint> volPoints) {
 
-) {
-
+    /**
+     * Creates a volatility smile and ensures points are sorted by strike.
+     */
     public VolSmile {
-        validateTenor(tenor);
-        validateMaturityYears(maturityYears);
-
-        volPoints = normalizeVolPoints(volPoints);
-    }
-
-    public static VolSmile of(String tenor, double maturityYears, List<VolPoint> points) {
-        return new VolSmile(tenor, maturityYears, points);
-    }
-
-    public int size() {
-        return volPoints.size();
-    }
-
-    private static void validateTenor(String tenor) {
-        if (tenor == null || tenor.isBlank()) {
-            throw new IllegalArgumentException("Tenor cannot be null or blank");
-        }
-    }
-
-    private static void validateMaturityYears(double maturityYears) {
-        if (!Double.isFinite(maturityYears) || maturityYears <= 0.0) {
-            throw new IllegalArgumentException("Maturity years must be a positive finite number");
-        }
-    }
-
-    private static List<VolPoint> normalizeVolPoints(List<VolPoint> volPoints) {
         if (volPoints == null) {
             throw new IllegalArgumentException("Volatility points cannot be null");
         }
 
-        if (volPoints.size() < 2) {
-            throw new IllegalArgumentException("Volatility points must contain at least two points for interpolation");
-        }
+        // Create a defensive copy and sort by strike
+        volPoints = new ArrayList<>(volPoints);
+        volPoints.sort(Comparator.comparing(VolPoint::strike));
 
-        List<VolPoint> sorted = volPoints.stream()
-                .map(Objects::requireNonNull)
-                .sorted(Comparator.comparingDouble(VolPoint::strike))
-                .toList();
+        // Validate that all strikes are unique
+        validateUniqueStrikes(volPoints);
+    }
 
-        for (int i = 0; i < sorted.size(); i++) {
-            VolPoint p = sorted.get(i);
-
-            if (!Double.isFinite(p.strike()) || p.strike() <= 0.0) {
-                throw new IllegalArgumentException("strike must be finite and > 0");
-            }
-            if (!Double.isFinite(p.iv()) || p.iv() <= 0.0 || p.iv() >= 5.0) {
-                throw new IllegalArgumentException("iv must be finite and in (0, 5)");
-            }
-            if (i > 0) {
-                double prevK = sorted.get(i - 1).strike();
-                if (p.strike() <= prevK) {
-                    throw new IllegalArgumentException("strikes must be strictly increasing");
-                }
+    /**
+     * Validates that all strikes in the smile are unique.
+     * @param points The list of volatility points to validate
+     * @throws IllegalArgumentException if duplicate strikes are found
+     */
+    private static void validateUniqueStrikes(List<VolPoint> points) {
+        for (int i = 1; i < points.size(); i++) {
+            if (Double.compare(points.get(i-1).strike(), points.get(i).strike()) == 0) {
+                throw new IllegalArgumentException(
+                    "Duplicate strike found: " + points.get(i).strike());
             }
         }
+    }
 
-        return List.copyOf(sorted);
+    /**
+     * Returns the number of points in the smile.
+     * @return The number of volatility points
+     */
+    public int size() {
+        return volPoints.size();
+    }
+
+    /**
+     * Checks if the smile is empty.
+     * @return true if the smile contains no points
+     */
+    public boolean isEmpty() {
+        return volPoints.isEmpty();
+    }
+
+    /**
+     * Gets the minimum strike in the smile.
+     * @return The minimum strike price
+     * @throws IllegalStateException if the smile is empty
+     */
+    public double minStrike() {
+        if (isEmpty()) {
+            throw new IllegalStateException("Cannot get min strike from empty smile");
+        }
+        return volPoints.get(0).strike();
+    }
+
+    /**
+     * Gets the maximum strike in the smile.
+     * @return The maximum strike price
+     * @throws IllegalStateException if the smile is empty
+     */
+    public double maxStrike() {
+        if (isEmpty()) {
+            throw new IllegalStateException("Cannot get max strike from empty smile");
+        }
+        return volPoints.get(volPoints.size() - 1).strike();
     }
 }
